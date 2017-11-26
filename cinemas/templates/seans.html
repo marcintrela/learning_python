@@ -1,0 +1,48 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+    <div style="padding-left:10%;margin: auto; height:150px">
+        <div style="width:40%;float:left;">
+            <h3>Utwórz seans</h3>
+            <form method="post" action="/seans">
+                <label>Wybierz film</label>
+                <select name="movie_id">
+                    {% for k,v in movies.items() %}
+                        <option value="{{ k }}">{{ v }}</option>
+                    {% endfor %}
+                </select><br>
+                <label>Wybierz kino</label>
+                <select name="cinema_id">
+                    {% for k,v in cinemas.items() %}
+                        <option value="{{ k }}">{{ v }}</option>
+                    {% endfor %}
+                </select>
+                <button name="submit" type="submit" value="send">Połącz</button>
+            </form>
+        </div>
+        <div style="width:15%;float:left;">
+            <h3>Pokaż seanse</h3>
+            <form method="post" action="/seans">
+                <button name="submit" type="submit" value="show">Pokaż seanse</button>
+            </form>
+        </div>
+        <div style="float:left;">
+            <h3>Usuń seans</h3>
+            <form method="post" action="/seans">
+                <label>Podaj ID seansu</label>
+                <input name="del_seans" type="text" value=""/>
+                <button name="submit" type="submit" value="usun">Usuń</button>
+            </form>
+        </div>
+    </div>
+        <hr>
+        <div>
+            <ol style="margin-left:10%;">
+                {% for row in html %}
+                    <strong><li>{{row}}</li></strong><br>
+                {% endfor%}
+            </ol>
+        </div>
+
+{% endblock %}

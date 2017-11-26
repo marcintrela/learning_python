@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+
+
+    {% block content %}
+    <div style="padding-left:10%;margin: auto; height:250px">
+        <div style="width:33%;float:left;">
+            <h3>Dodaj Kino</h3>
+            <form class="cinema_form" method="post" action="/kino">
+                <label>Nazwa</label><br>
+                <input name="name" type="text" maxlength="255" value=""/><br>
+                <label>Adres</label><br>
+                <input name="address" type="text" maxlength="255" value=""/><br>
+                <label>Ilość miejsc</label><br>
+                <input name="seats" type="text" maxlength="1000" value=0><br>
+                <button type="submit" name="submit" value="cinema">Wyślij</button>
+            </form>
+        </div>
+        <div style="width:33%;float:left;">
+            <h3>Wyszukiwanie kin</h3>
+            <form class="cinema_form" method="post" action="/kino">
+                <label>Wyszukaj kino</label><br>
+                <input name="find_cinema" type="text" value=""/><br>
+                <button name="submit" type="submit" value="znajdz">Znajdź</button>
+                <button name="submit" type="submit" value="show">Pokaż wszystkie/odśwież listę</button>
+            </form>
+        </div>
+        <div style="float:left;">
+            <h3>Usuwanie kina z listy</h3>
+            <form class="cinema_form" method="post" action="/kino">
+                <label>Podaj ID kina do usunięcia</label><br>
+                <input name="del_cinema" type="text" value=""/><br>
+                <button type="submit" name="submit" value="usun">Usuń</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <ol style="margin-left:10%;">
+        {% for k,v in html.items() %}
+            <li><a style="color: #55552b; font-size:100%; font-weight:bold;" href='kino_site/{{k}}'>"{{v}}"</a></li><br>
+        {% endfor %}
+        </ol>
+    </div>
+    {% endblock %}
+

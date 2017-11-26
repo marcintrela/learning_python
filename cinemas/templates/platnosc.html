@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+      <div style="padding-left:10%;margin: auto; height:250px">
+        <div style="width:33%;float:left;">
+            <h3>Dodaj płatność</h3>
+            <form class="payment_form" method="post" action="/platnosc">
+                <label>Typ platnosci</label><br>
+                <select name="payment_type">
+                    <option value="transfer">Przelew</option>
+                    <option value="cash">Gotówka</option>
+                    <option value="card">Karta</option>
+                </select><br>
+                <label>Data</label><br>
+                <input type="date" name="payment_date" placeholder="rrrr.mm.dd"><br>
+                <button type="submit" name="submit" value="payment">Wyślij</button>
+            </form>
+        </div>
+          <div style="width:33%;float:left;">
+            <h3>Pokaż płatności</h3>
+              <form class="payment_form" method="post" action="/platnosc">
+                  <button type="submit" name="submit" value="show">Pokaż płatności</button><br>
+                  <label>Wybierz zakres</label><br>
+                  <input name="day_payment" type="date" placeholder="rrrr.mm.dd"/>
+                  <select name="variant">
+                      <option value="before">Przed datą</option>
+                      <option value="after">Po dacie</option>
+                      <option value="in_day">W dniu</option>
+                  </select>
+                  <button type="submit" name="submit" value="show_option">Pokaż</button><br>
+                  <hr>
+                  <label>OD:</label>
+                  <input name="from_day" type="date" placeholder="rrrr.mm.dd"/><br>
+                  <label>DO:</label>
+                  <input name="to_day" type="date" placeholder="rrrr.mm.dd"/><br>
+                  <button name="submit" type="submit" value="show_betw">Pokaż</button>
+              </form>
+          </div>
+          <div style="float:left;">
+              <h3>Usuń płatność</h3>
+              <form class="payment_form" method="post" action="/platnosc">
+                <label>Podaj ID płatności</label><br>
+                <input name="del_payment" type="number" value=""/><br>
+                <button name="submit" type="submit" value="usun">Usuń</button>
+              </form>
+          </div>
+      </div>
+    <hr>
+    <div>
+        <ol style="margin-left:10%;">
+        {% for row in html%}
+            <strong><li>{{row}}</li></strong><br>
+        {% endfor%}
+        </ol>
+    </div>
+
+
+
+{% endblock %}

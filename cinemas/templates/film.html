@@ -1,0 +1,49 @@
+
+{% extends "index.html" %}
+
+
+{% block content %}
+    <div style="padding-left:10%;margin: auto; height:250px">
+        <div style="width:33%;float:left;">
+            <h3>Dodaj film</h3>
+            <form class="movie_form" method="post" action="/film">
+                <label>Tytuł filmu</label><br>
+                <input name="name" type="text" maxlength="255" value=""/><br>
+                <label>Opis</label><br>
+                <input name="desc" type="text" maxlength="255" value=""/><br>
+                <label>Rating</label><br>
+                <input name="rating" type="number" min="0" max="10"/><br>
+                <button type="submit" name="submit" value="movie">Wyślij</button>
+            </form>
+        </div>
+        <div style="width:33%;float:left">
+            <h3>Wyszukaj film</h3>
+            <form class="movie_form" method="post" action="/film">
+                <button name="submit" type="submit" value="show">Pokaż wszystkie filmy/odśwież widok</button><br>
+                <label>Wyszukaj film(tytuł)</label><br>
+                <input name="mov_find" type="text" maxlength="255" value=""/><br>
+                <button name="submit" type="submit" value="znajdz">Wyszukaj</button><br>
+                <label>Wyszukaj film(rating)</label><br>
+                <input name="rat_find" type="number" min="0" max="10"/><br>
+                <button name="submit" type="submit" value="rating_f">Wyszukaj</button>
+            </form>
+        </div>
+        <div style="float:left;">
+            <h3>Usuń film z bazy</h3>
+            <form class="movie_form" method="post" action="/film">
+                <label>Podaj ID filmu do usunięcia</label><br>
+                <input name="del_movie" type="text" value=""/><br>
+                <button name="submit" type="submit" value="usun">Usuń</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <ol style="margin-left:10%;">
+        {% for k,v in html.items() %}
+            <li><a style="color: #55552b; font-size:100%; font-weight:bold;" href='film_site/{{k}}'>"{{v}}"</a></li><br>
+        {% endfor %}
+        </ol>
+    </div>
+
+{% endblock %}

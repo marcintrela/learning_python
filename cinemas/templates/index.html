@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikacja Kino</title>
+    <style>
+        body {
+            background-color:  #ccff33;
+            }
+        h1   {
+                color: #55552b;
+                font-size:300%;
+                text-align:center;
+                }
+        th  {   width:20%;
+
+                background-color: #55552b;
+                }
+
+        table{
+                margin:auto;
+                padding: 10px;
+                width: 70%;
+                }
+         a:link, a:visited {
+                color: white;
+                font-size:150%;
+                background-color: transparent;
+                text-decoration: none;
+                }
+         a:hover{
+                 color: red;
+                 }
+         div {  color: #55552b;
+                }
+         label { text-align:left;
+                }
+    </style>
+</head>
+<body>
+    <h1>Aplikacja webowa KINO</h1>
+    <table>
+        <tr>
+            {% for item in nawigation %}
+            <th><a href = '{{item.href}}'>{{item.caption}}</a></th>
+            {% endfor %}
+        </tr>
+    </table>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
